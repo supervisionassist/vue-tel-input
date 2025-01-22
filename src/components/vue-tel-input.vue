@@ -202,7 +202,12 @@
       data.phone = value ?? '';
     }
   })
-
+  watch(() =>props.defaultCountry, (value: string) => {
+    if (value) {
+      choose(value) // make default country reactive when passed
+    }
+  });
+  
   const data = reactive({
     phone: '',
     activeCountryCode: undefined as CountryCode | undefined,
